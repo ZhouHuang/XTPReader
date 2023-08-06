@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <vector>
 #include <string>
+#include <set>
 
 #include "csv.h"
 
@@ -11,7 +12,7 @@ using std::map;
 using std::unordered_map;
 using std::string;
 using std::vector;
-
+using std::set;
 class XTPReader {
   public:
     explicit XTPReader(const char* path
@@ -32,7 +33,7 @@ class XTPReader {
 
     void read_csv();
 
-    vector<string> get_stocks_code_list();
+    set<string> get_stocks_code_list();
 
     vector<vector<string>> get_stock_data(string stk_code);
 
@@ -45,7 +46,7 @@ class XTPReader {
     int m_skip_rows;
     bool m_ignore_BOM;
 
-    vector<string> m_stk_code_list;
+    set<string> m_stk_code_list;
     
     unordered_map<string, vector<vector<string>> > m_data;
 };

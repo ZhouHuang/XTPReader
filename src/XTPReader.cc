@@ -20,12 +20,12 @@ void XTPReader::read_csv() {
                 ,info[9],info[10],info[11])){
         auto code = info[m_code_col];
         m_data[code].push_back(info);
-        m_stk_code_list.push_back(code);
+        m_stk_code_list.insert(code);
     }
     
 }
 
-vector<string> XTPReader::get_stocks_code_list() {
+set<string> XTPReader::get_stocks_code_list() {
     return m_stk_code_list;
 }
 
