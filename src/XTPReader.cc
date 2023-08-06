@@ -18,6 +18,8 @@ void XTPReader::read_csv() {
                 ,info[4], info[5], info[6], info[7], info[8]
                 ,info[9],info[10],info[11])){
         auto code = info[m_code_col];
+        // TODO: zfill(6)
+        // TODO: stock code filter
         m_data[code].push_back(info);
         m_stk_code_list.insert(code);
     }
