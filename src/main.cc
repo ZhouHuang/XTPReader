@@ -5,7 +5,7 @@ using std::cout;
 using std::endl;
 
 int main(int argc, char* argv[]) {
-    const string path = "demo_t.csv";
+    const string path = "./test/demo_t.csv";
     
     int code_col = 6;
     int header=-1;
