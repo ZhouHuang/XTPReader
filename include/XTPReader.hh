@@ -32,6 +32,8 @@ class XTPReader {
 
     void read_csv();
 
+    void to_csv(const char*, const string& );
+
     set<string> get_stocks_code_list();
 
     vector<vector<string>> get_stock_data(string stk_code);

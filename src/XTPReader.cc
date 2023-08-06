@@ -31,3 +31,7 @@ set<string> XTPReader::get_stocks_code_list() {
 vector<vector<string>> XTPReader::get_stock_data(string stk_code) {
     return m_data[stk_code];
 }
+
+void XTPReader::to_csv(const char* path, const string& code) {
+    //
+}
