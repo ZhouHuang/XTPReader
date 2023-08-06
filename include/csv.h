@@ -1107,8 +1107,8 @@ namespace io{
         }
 
         template<unsigned column_count,
-                class trim_policy = trim_chars<' ', '\t'>,
-                class quote_policy = no_quote_escape<','>,
+                class trim_policy = trim_chars<' '>,
+                class quote_policy = no_quote_escape<'\t'>,
                 class overflow_policy = throw_on_overflow,
                 class comment_policy = no_comment
         >
