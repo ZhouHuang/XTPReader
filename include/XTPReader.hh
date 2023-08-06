@@ -5,6 +5,9 @@
 #include <vector>
 #include <string>
 #include <set>
+#include <filesystem>
+#include <iostream>
+#include <fstream>
 
 #include "csv.h"
 
@@ -32,7 +35,7 @@ class XTPReader {
 
     void read_csv();
 
-    void to_csv(const char*, const string& );
+    void to_csv(const char*, const string& , const string&);
 
     set<string> get_stocks_code_list();
 

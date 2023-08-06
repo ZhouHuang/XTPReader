@@ -32,6 +32,39 @@ vector<vector<string>> XTPReader::get_stock_data(string stk_code) {
     return m_data[stk_code];
 }
 
-void XTPReader::to_csv(const char* path, const string& code) {
-    //
+void XTPReader::to_csv(const char* path, const string& code, const string& dt) {
+    if (nullptr == path) {
+        throw std::runtime_error("input path is empty");
+    } else {
+        if (0 == strlen(path)) {
+            throw std::runtime_error("input path is empty");
+        }
+    }
+    string f_path = "";
+    if ('/' != path[0]) {
+        f_path = string(std::__fs::filesystem::current_path()) + "/" + string(path) + "/" + code + "_" + dt + ".csv";
+    } else {
+        f_path = string(path) + "/" + code + "_" + dt + ".csv";
+    }
+
+    if (std::__fs::filesystem::exists(f_path)) {
+        std::cout << "file path " << f_path << " code " << code  << " dt " << dt << std::endl;
+        throw std::runtime_error(" already exists.");
+    }
+    std::ofstream outFile(f_path, std::ios::out);
+
+	if (!outFile.is_open()) {
+        std::cout << "file path " << f_path << " code " << code  << " dt " << dt << std::endl;
+        throw std::runtime_error(" can not be opened");
+    } else {
+        for (const auto& line : m_data[code]) {
+            for(int i = 0; i< line.size();  ++ i){
+                outFile << line.at(i);
+                if (i != line.size()-1) outFile << ',';
+            }
+            outFile << std::endl;
+        }
+	}
+    outFile.close();
+
 }
