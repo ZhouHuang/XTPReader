@@ -21,10 +21,9 @@ class XTPReader {
     explicit XTPReader(const char* path
                     , int code_col
                     , int header=-1
-                    , int skiprows=0
-                    , bool ignore_BOM=true)
+                    , int skiprows=0)
      : m_path{path} , m_code_col{code_col} , m_header{header}
-     , m_skip_rows{skiprows} , m_ignore_BOM{ignore_BOM}
+     , m_skip_rows{skiprows}
      {
          if (-1 != header) {
              throw std::runtime_error("input header not implemented");
@@ -47,7 +46,6 @@ class XTPReader {
     int m_code_col;
     int m_header;
     int m_skip_rows;
-    bool m_ignore_BOM;
 
     set<string> m_stk_code_list;
     
