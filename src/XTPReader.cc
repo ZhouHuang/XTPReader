@@ -44,12 +44,12 @@ void XTPReader::to_csv(const char* path, const string& code, const string& dt) {
     }
     string f_path = "";
     if ('/' != path[0]) {
-        f_path = string(std::__fs::filesystem::current_path()) + "/" + string(path) + "/" + code + "_" + dt + ".csv";
+        f_path = string(fs::current_path()) + "/" + string(path) + "/" + code + "_" + dt + ".csv";
     } else {
         f_path = string(path) + "/" + code + "_" + dt + ".csv";
     }
 
-    if (std::__fs::filesystem::exists(f_path)) {
+    if (fs::exists(f_path)) {
         std::cout << "file path " << f_path << " code " << code  << " dt " << dt << std::endl;
         throw std::runtime_error(" already exists.");
     }

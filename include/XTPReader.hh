@@ -1,5 +1,6 @@
 #pragma once
 
+
 #include <map>
 #include <unordered_map>
 #include <vector>
@@ -8,6 +9,15 @@
 #include <filesystem>
 #include <iostream>
 #include <fstream>
+
+
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
+
+#elif __APPLE__
+    namespace fs = std::__fs::filesystem;
+#elif __linux__
+    namespace fs = std::filesystem;
+#endif
 
 #include "csv.h"
 
