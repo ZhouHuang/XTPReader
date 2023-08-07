@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION  3.21)
+cmake_minimum_required(VERSION  3.16)
 project(XTPReader)
 add_compile_options(-std=c++17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -g")
@@ -20,7 +20,7 @@ set(CPP_SOURCE_CODE_LIST
 add_library(XTPReader_c
         ${CPP_SOURCE_CODE_LIST})
 add_executable(read_teset src/main.cc)
-target_link_libraries(read_teset XTPReader_c)
+target_link_libraries(read_teset XTPReader_c pthread)
 
 pybind11_add_module(XTPReader
         src/RD_py.cc
