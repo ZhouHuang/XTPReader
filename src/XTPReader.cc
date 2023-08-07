@@ -1,6 +1,9 @@
 #include "XTPReader.hh"
 
-void XTPReader::read_csv() {
+void XTPReader::read_csv(int ex) {
+    /*
+    *   ex = 1, SH, ex = 2, SZ
+    */
     io::CSVReader<NCOL> rd(m_path);
 
     vector<string> info(NCOL, "");
@@ -18,8 +21,22 @@ void XTPReader::read_csv() {
                 ,info[4], info[5], info[6], info[7], info[8]
                 ,info[9],info[10],info[11])){
         auto code = info[m_code_col];
-        // TODO: zfill(6)
-        // TODO: stock code filter
+        if (code.size() > 6) {
+            continue;
+        }
+        if (code.size() < 6) {
+            code = string(6-code.size(), '0') + code;
+        }
+        if (1 == ex) {
+            if (code.at(0) != '6') {
+                continue;
+            }
+        } else if (2 == ex) {
+            if (code.at(0) != '3' && code.at(0) != '0') {
+                continue;
+            }
+        }
+        info[m_code_col] = code;
         m_data[code].push_back(info);
         m_stk_code_list.insert(code);
     }

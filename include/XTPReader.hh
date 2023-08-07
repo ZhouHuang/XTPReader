@@ -42,7 +42,7 @@ class XTPReader {
 
     XTPReader(const XTPReader&) = delete;
 
-    void read_csv();
+    void read_csv(int ex);
 
     void to_csv(const char*, const string& , const string&);
 
