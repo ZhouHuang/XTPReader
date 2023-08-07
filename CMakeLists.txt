@@ -19,8 +19,8 @@ set(CPP_SOURCE_CODE_LIST
 
 add_library(XTPReader_c
         ${CPP_SOURCE_CODE_LIST})
-add_executable(read_teset src/main.cc)
-target_link_libraries(read_teset XTPReader_c pthread)
+add_executable(read_test src/main.cc)
+target_link_libraries(read_test XTPReader_c pthread)
 
 pybind11_add_module(XTPReader
         src/RD_py.cc
